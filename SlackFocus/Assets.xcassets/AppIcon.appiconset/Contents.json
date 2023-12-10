@@ -1,46 +1,55 @@
 {
   "images" : [
     {
+      "filename" : "Business expert (512 x 512 px) 8.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
+      "filename" : "Business expert (512 x 512 px) 7.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
+      "filename" : "Business expert (512 x 512 px) 6.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
+      "filename" : "Business expert (512 x 512 px) 5.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
+      "filename" : "Business expert (512 x 512 px) 4.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
+      "filename" : "Business expert (512 x 512 px) 2.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
+      "filename" : "Business expert (512 x 512 px) 3.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
+      "filename" : "Business expert (512 x 512 px) 1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
+      "filename" : "Business expert (512 x 512 px).png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"

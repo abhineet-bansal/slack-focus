@@ -13,7 +13,7 @@ struct SlackFocusApp: App {
     @StateObject var appState = AppState.shared
     
     var body: some Scene {
-        MenuBarExtra("SlackFocusApp", systemImage: "hammer") {
+        MenuBarExtra("SlackFocusApp", systemImage: "swirl.circle.righthalf.filled") {
             AppMenu()
                 .environmentObject(appState)
         }.menuBarExtraStyle(.window)

@@ -32,9 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     let isWorkMode = AppState.shared.workMode
                     print("Work mode is \(isWorkMode)")
                     
-                    
-                    // Schedule a timer to minimize Slack after 60 seconds
-                    let timerDuration: TimeInterval = isWorkMode ? 10 : 5
+                    let timerDuration: TimeInterval = isWorkMode ? 30 * 60 : 60
                     startTimer(duration: Int(timerDuration))
                 }
         }

@@ -23,13 +23,26 @@ struct AppMenu: View {
                     .background(appState.workMode ? Color.red : Color.orange)
                     .cornerRadius(10)
             }
+            .buttonStyle(PlainButtonStyle())
             
             Text("Time Remaining: \(formattedTime(appState.remainingTime))")
                 .opacity(appState.showTimer ? 1 : 0)
                 .font(.title2)
                 .padding()
+            
+            HStack {
+                Spacer()
+                Button(action: {
+                    NSApplication.shared.terminate(nil)
+                }) {
+                    Image(systemName: "trash.fill")
+                        .padding(4)
+                }
+                .clipShape(Capsule())
+                .padding()
+            }
         }
-        .frame(width: 300, height: 200)
+        .frame(width: 300, height: 220)
     }
     
     func handleWorkModeToggle() {
