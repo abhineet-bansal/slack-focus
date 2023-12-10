@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    @EnvironmentObject var appState: AppState
     var timer: Timer?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -28,16 +27,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if app.localizedName == "Slack" {
                     print("Slack is activated!")
                     AppState.shared.slackApp = app
+                    AppState.shared.showTimer = true
                     
                     let isWorkMode = AppState.shared.workMode
                     print("Work mode is \(isWorkMode)")
                     
+                    
                     // Schedule a timer to minimize Slack after 60 seconds
                     let timerDuration: TimeInterval = isWorkMode ? 10 : 5
-                        self.timer = Timer.scheduledTimer(withTimeInterval: timerDuration, repeats: false) { _ in
-                            SlackHelper.minimizeSlack()
-                        }
+                    startTimer(duration: Int(timerDuration))
                 }
         }
+    }
+    
+    func startTimer(duration: Int) {
+        stopTimer() // Make sure to stop any existing timer
+
+        AppState.shared.remainingTime = duration
+        print("Starting with time: \(duration)")
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+
+            AppState.shared.remainingTime -= 1
+
+            if AppState.shared.remainingTime <= 0 {
+                AppState.shared.workMode = false
+                AppState.shared.showTimer = false
+                
+                SlackHelper.minimizeSlack()
+                self.stopTimer()
+            }
+        }
+    }
+
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }

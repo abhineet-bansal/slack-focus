@@ -13,16 +13,9 @@ struct SlackFocusApp: App {
     @StateObject var appState = AppState.shared
     
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("SlackFocusApp", systemImage: "hammer") {
+            AppMenu()
                 .environmentObject(appState)
-        }
+        }.menuBarExtraStyle(.window)
     }
-}
-
-class AppState: ObservableObject {
-    static let shared = AppState()
-    
-    @Published var workMode = false
-    @Published var slackApp: NSRunningApplication? = nil
 }

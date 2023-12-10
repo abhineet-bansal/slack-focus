@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AppMenu.swift
 //  SlackFocus
 //
 //  Created by Abhineet Bansal on 10/12/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AppMenu: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
@@ -15,16 +15,21 @@ struct ContentView: View {
             Button(action: {
                 handleWorkModeToggle()
             }) {
-                Text(appState.workMode ? "Stop Slack Work Mode" : "Start Slack Work Mode")
+                Text(appState.workMode ? "Stop" : "Start Slack Focus Mode")
+                    .font(.title2)
                     .padding()
-                    .background(appState.workMode ? Color.red : Color.green)
+                    .frame(width: 220)
                     .foregroundColor(.white)
+                    .background(appState.workMode ? Color.red : Color.orange)
                     .cornerRadius(10)
             }
-            .padding()
+            
+            Text("Time Remaining: \(formattedTime(appState.remainingTime))")
+                .opacity(appState.showTimer ? 1 : 0)
+                .font(.title2)
+                .padding()
         }
         .frame(width: 300, height: 200)
-        
     }
     
     func handleWorkModeToggle() {
@@ -36,9 +41,14 @@ struct ContentView: View {
             SlackHelper.minimizeSlack()
         }
     }
+    
+    func formattedTime(_ seconds: Int) -> String {
+        let minutes = seconds / 60
+        let remainingSeconds = seconds % 60
+        return String(format: "%02d:%02d", minutes, remainingSeconds)
+    }
 }
 
 #Preview {
-    ContentView()
+    AppMenu().environmentObject(AppState.shared)
 }
-
