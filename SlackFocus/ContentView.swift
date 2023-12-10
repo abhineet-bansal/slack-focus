@@ -8,17 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Button(action: {
+                handleWorkModeToggle()
+            }) {
+                Text(appState.workMode ? "Stop Slack Work Mode" : "Start Slack Work Mode")
+                    .padding()
+                    .background(appState.workMode ? Color.red : Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+            .padding()
         }
-        .padding()
+        .frame(width: 300, height: 200)
+        
+    }
+    
+    func handleWorkModeToggle() {
+        print("Toggle button clicked!")
+        appState.workMode.toggle()
+        
+        if (!appState.workMode) {
+            print("Work Mode turned off. Minimizing Slack")
+            SlackHelper.minimizeSlack()
+        }
     }
 }
 
 #Preview {
     ContentView()
 }
+
