@@ -15,7 +15,7 @@ class SlackHelper {
         }
 
         // Minimize the Slack app
+        print("Hiding Slack")
         slackApp.performSelector(onMainThread: #selector(NSRunningApplication.hide), with: nil, waitUntilDone: true)
-        print("Slack is minimized!")
     }
 }

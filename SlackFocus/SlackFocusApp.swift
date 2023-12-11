@@ -13,9 +13,16 @@ struct SlackFocusApp: App {
     @StateObject var appState = AppState.shared
     
     var body: some Scene {
-        MenuBarExtra("SlackFocusApp", systemImage: "swirl.circle.righthalf.filled") {
+        MenuBarExtra {
             AppMenu()
                 .environmentObject(appState)
-        }.menuBarExtraStyle(.window)
+        } label: {
+            let configuration = NSImage.SymbolConfiguration(pointSize: 16, weight: .light)
+                .applying(.init(paletteColors: [.red]))
+            let image = NSImage(systemSymbolName: "swirl.circle.righthalf.filled", accessibilityDescription: nil)
+            let updateImage = AppState.isSlackTurnedOn() ? image?.withSymbolConfiguration(configuration) : image
+            Image(nsImage: updateImage!)
+        }
+            .menuBarExtraStyle(.window)
     }
 }
