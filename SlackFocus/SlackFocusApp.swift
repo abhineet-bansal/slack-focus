@@ -21,7 +21,11 @@ struct SlackFocusApp: App {
                 .applying(.init(paletteColors: [.red]))
             let image = NSImage(systemSymbolName: "swirl.circle.righthalf.filled", accessibilityDescription: nil)
             let updateImage = AppState.isSlackTurnedOn() ? image?.withSymbolConfiguration(configuration) : image
-            Image(nsImage: updateImage!)
+            
+            HStack {
+                Image(nsImage: updateImage!)
+                Text(AppState.isSlackTurnedOn() ? "\(Util.formattedTime(AppState.getRemainingTime()))" : "")
+            }
         }
             .menuBarExtraStyle(.window)
     }

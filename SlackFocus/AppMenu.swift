@@ -37,7 +37,7 @@ struct AppMenu: View {
             }
             .buttonStyle(PlainButtonStyle())
             
-            Text("Time Remaining: \(formattedTime(AppState.getRemainingTime()))")
+            Text("Time Remaining: \(Util.formattedTime(AppState.getRemainingTime()))")
                 .opacity(AppState.isSlackTurnedOn() ? 1 : 0)
                 .font(.title2)
                 .padding()
@@ -56,12 +56,6 @@ struct AppMenu: View {
             }
         }
         .frame(width: 300, height: 220)
-    }
-    
-    func formattedTime(_ seconds: Int) -> String {
-        let minutes = seconds / 60
-        let remainingSeconds = seconds % 60
-        return String(format: "%02d:%02d", minutes, remainingSeconds)
     }
 }
 
