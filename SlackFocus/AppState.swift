@@ -10,7 +10,18 @@ import SwiftUI
 class AppState: ObservableObject {
     static let shared = AppState()
     
+    static let SHORT_WORK_TIME = 5 * 60
+    static let LONG_WORK_TIME = 30 * 60
+    static let AD_HOC_WORK_TIME = 2
+    
+    enum WorkModeType {
+        case invalid
+        case short  // 5 min
+        case long   // 30 min
+    }
+    
     @Published var workMode = false
+    @Published var workModeType: WorkModeType = .invalid
     
     @Published var isSlackOn = false
     @Published var remainingTime = 0
@@ -43,15 +54,16 @@ class AppState: ObservableObject {
         }
     }
     
-    static func handleWorkModeToggle() {
+    static func handleWorkModeToggle(type: WorkModeType) {
         shared.workMode.toggle()
-        print("Work mode set to \(shared.workMode)")
         
         if shared.workMode {
             // If work mode has been turned on, start the timer
+            shared.workModeType = type
             startTimer()
         } else {
             // If work mode has been turned off, handle slack turning off
+            shared.workModeType = .invalid
             handleSlackTurnedOff()
         }
     }
@@ -60,9 +72,13 @@ class AppState: ObservableObject {
         shared.isSlackOn = true
         
         if isWorkMode {
-            shared.remainingTime = 30 * 60
+            switch (shared.workModeType) {
+            case .invalid: shared.remainingTime = AD_HOC_WORK_TIME
+            case .short: shared.remainingTime = SHORT_WORK_TIME
+            case .long: shared.remainingTime = LONG_WORK_TIME
+            }
         } else {
-            shared.remainingTime = 60
+            shared.remainingTime = AD_HOC_WORK_TIME
         }
         
         shared.timer = timer

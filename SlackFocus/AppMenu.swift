@@ -24,18 +24,35 @@ struct AppMenu: View {
                 Spacer()
             }
             
-            Button(action: {
-                AppState.handleWorkModeToggle()
-            }) {
-                Text(AppState.shared.workMode ? "Stop" : "Start Slack Focus Mode")
-                    .font(.title2)
-                    .padding()
-                    .frame(width: 220)
-                    .foregroundColor(.white)
-                    .background(AppState.shared.workMode ? Color.red : Color.green)
-                    .cornerRadius(10)
+            HStack {
+                Button(action: {
+                    AppState.handleWorkModeToggle(type: .short)
+                }) {
+                    Text(AppState.shared.workMode ? "Stop" : "Small Task")
+                        .font(.title2)
+                        .padding()
+                        .frame(width: 130)
+                        .foregroundColor(.white)
+                        .background(AppState.shared.workMode ? Color.red : Color.orange)
+                        .cornerRadius(10)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .disabled(AppState.shared.workMode && AppState.shared.workModeType != .short)
+                
+                Button(action: {
+                    AppState.handleWorkModeToggle(type: .long)
+                }) {
+                    Text(AppState.shared.workMode ? "Stop" : "Focus Mode")
+                        .font(.title2)
+                        .padding()
+                        .frame(width: 130)
+                        .foregroundColor(.white)
+                        .background(AppState.shared.workMode ? Color.red : Color.green)
+                        .cornerRadius(10)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .disabled(AppState.shared.workMode && AppState.shared.workModeType != .long)
             }
-            .buttonStyle(PlainButtonStyle())
             
             Text("Time Remaining: \(Util.formattedTime(AppState.getRemainingTime()))")
                 .opacity(AppState.isSlackTurnedOn() ? 1 : 0)
@@ -55,7 +72,7 @@ struct AppMenu: View {
                 .padding()
             }
         }
-        .frame(width: 300, height: 220)
+        .frame(width: 340, height: 220)
     }
 }
 
