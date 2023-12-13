@@ -60,7 +60,11 @@ struct AppMenu: View {
                 .padding()
             
             HStack {
+                Text(CounterManager.getCountersText())
+                    .padding()
+                
                 Spacer()
+                
                 Button(action: {
                     NSApplication.shared.terminate(nil)
                 }) {
@@ -73,6 +77,9 @@ struct AppMenu: View {
             }
         }
         .frame(width: 340, height: 220)
+        .onAppear {
+            CounterManager.loadCounters()
+        }
     }
 }
 

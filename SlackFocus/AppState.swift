@@ -73,12 +73,22 @@ class AppState: ObservableObject {
         
         if isWorkMode {
             switch (shared.workModeType) {
-            case .invalid: shared.remainingTime = AD_HOC_WORK_TIME
-            case .short: shared.remainingTime = SHORT_WORK_TIME
-            case .long: shared.remainingTime = LONG_WORK_TIME
+            case .invalid: do {
+                shared.remainingTime = AD_HOC_WORK_TIME
+                CounterManager.incrementAndSaveCounter(type: .adhoc)
+            }
+            case .short: do {
+                shared.remainingTime = SHORT_WORK_TIME
+                CounterManager.incrementAndSaveCounter(type: .shortTask)
+            }
+            case .long: do {
+                shared.remainingTime = LONG_WORK_TIME
+                CounterManager.incrementAndSaveCounter(type: .focusWork)
+            }
             }
         } else {
             shared.remainingTime = AD_HOC_WORK_TIME
+            CounterManager.incrementAndSaveCounter(type: .adhoc)
         }
         
         shared.timer = timer

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7920D63D2B27A2780078449C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7920D63C2B27A2780078449C /* Util.swift */; };
+		7920D63F2B27B3BF0078449C /* CounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7920D63E2B27B3BF0078449C /* CounterManager.swift */; };
 		7928E7BA2B254AD200FBB788 /* SlackFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7928E7B92B254AD200FBB788 /* SlackFocusApp.swift */; };
 		7928E7BE2B254AD300FBB788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7928E7BD2B254AD300FBB788 /* Assets.xcassets */; };
 		7928E7C12B254AD300FBB788 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7928E7C02B254AD300FBB788 /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		7920D63C2B27A2780078449C /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		7920D63E2B27B3BF0078449C /* CounterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterManager.swift; sourceTree = "<group>"; };
 		7928E7B62B254AD200FBB788 /* SlackFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlackFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7928E7B92B254AD200FBB788 /* SlackFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackFocusApp.swift; sourceTree = "<group>"; };
 		7928E7BD2B254AD300FBB788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				7928E7CC2B256A7E00FBB788 /* AppMenu.swift */,
 				7928E7C82B25624900FBB788 /* AppDelegate.swift */,
 				7928E7CA2B25685800FBB788 /* SlackHelper.swift */,
+				7920D63E2B27B3BF0078449C /* CounterManager.swift */,
 				7920D63C2B27A2780078449C /* Util.swift */,
 				7928E7BD2B254AD300FBB788 /* Assets.xcassets */,
 				7928E7C22B254AD300FBB788 /* SlackFocus.entitlements */,
@@ -157,6 +160,7 @@
 				7928E7CB2B25685800FBB788 /* SlackHelper.swift in Sources */,
 				7928E7CD2B256A7E00FBB788 /* AppMenu.swift in Sources */,
 				7928E7BA2B254AD200FBB788 /* SlackFocusApp.swift in Sources */,
+				7920D63F2B27B3BF0078449C /* CounterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +299,7 @@
 				DEVELOPMENT_TEAM = 7BT5U45BCV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -323,6 +328,7 @@
 				DEVELOPMENT_TEAM = 7BT5U45BCV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

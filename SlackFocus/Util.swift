@@ -13,4 +13,12 @@ class Util {
         let remainingSeconds = seconds % 60
         return String(format: "%02d:%02d", minutes, remainingSeconds)
     }
+    
+    static func getTodaysDate() -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        formatter.timeZone = TimeZone.current
+        return formatter.string(from: Date())
+    }
 }

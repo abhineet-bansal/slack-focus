@@ -11,6 +11,7 @@ import SwiftUI
 struct SlackFocusApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate : AppDelegate
     @StateObject var appState = AppState.shared
+    @StateObject var counterManager = CounterManager.shared
     
     var body: some Scene {
         MenuBarExtra {
